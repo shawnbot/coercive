@@ -1,5 +1,5 @@
 # coerce
-Coerce is a JavaScript toolkit for writing type coersions: functions that parse
+Coerce is a JavaScript toolkit for writing type coercions: functions that parse
 strings into other formats with configurable defaults if the string can't be
 parsed.
 
