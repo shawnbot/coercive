@@ -5,7 +5,8 @@
   "description": "",
   "main": "coerce.js",
   "dependencies": {
-    "d3": "~3.3.1"
+    "d3": "~3.3.1",
+    "vows": "~0.7.0"
   },
   "devDependencies": {},
   "scripts": {
