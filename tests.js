@@ -196,31 +196,3 @@ vows.describe("Coersions")
 
   })
   .run();
-
-/*
-test("money:", coerce.money(), [
-  "$382",
-  "$15,200.00",
-  null
-]);
-
-test("object {foo: int(0)}",
-  coerce.object()
-    .key("foo", "int", 0),
-  [
-    {foo: "12"},
-    {foo: "100"},
-    {foo: "5"},
-    {foo: "6.7"},
-    null
-  ]);
-
-function test(prefix, coersion, values) {
-  values.forEach(function(d) {
-    var copy = (typeof d === "object")
-      ? util._extend({}, d)
-      : d;
-    console.log(prefix, JSON.stringify(d), JSON.stringify(coersion(copy)));
-  });
-}
-*/
