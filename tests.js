@@ -117,6 +117,63 @@ vows.describe("Coersions")
     },
 
   })
+  .addBatch({
+
+    "object single-key coersion (as string)": {
+      topic: function() {
+        var coerceKey = coerce.object()
+          .key("size", "number");
+        return [
+          {size: "12"},
+          {size: "600"},
+          {size: "238792"},
+        ].map(coerceKey);
+      },
+      "should produce numbers": function(objects) {
+        objects.forEach(function(d) {
+          assert.equal(typeof d.size, "number");
+        });
+      }
+    },
+
+    "object single-key coersion (as function)": {
+      topic: function() {
+        var coerceKey = coerce.object()
+          .key("size", coerce.number());
+        return [
+          {size: "12"},
+          {size: "600"},
+          {size: "238792"},
+        ].map(coerceKey);
+      },
+      "should produce dates": function(objects) {
+        objects.forEach(function(d) {
+          assert.equal(typeof d.size, "number");
+        });
+      }
+    },
+
+    "object single-key coersion (as inline function)": {
+      topic: function() {
+        var coerceKey = coerce.object()
+          .key("size", function(str, key) {
+            assert.equal(key, "size");
+            return +str;
+          });
+        return [
+          {size: "12"},
+          {size: "600"},
+          {size: "238792"},
+        ].map(coerceKey);
+      },
+      "should produce dates": function(objects) {
+        objects.forEach(function(d) {
+          assert.equal(typeof d.size, "number");
+        });
+      }
+    },
+
+  })
   .run();
 
 /*
