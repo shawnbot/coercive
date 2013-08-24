@@ -45,19 +45,27 @@ var a = {size: "1.4"},
 // [{"size": 1.4}, {"size": 2.6}]
 
 // and you can coerce multiple keys like this:
-var fixNumbers = coerce.object()
+var prepData = coerce.object()
   .keys({
     height: "number",
     weight: "int",
     birthday: coerce.date("%Y-%m-%d")
   });
-fixNumbers({
+prepData({
   height: "6.5",
   weight: "250",
   birthday: "1945-12-15"
 });
 // produces:
 // {"height": 6.5, "weight": 250, "birthday": <Date>}
+
+// or, just apply your coersions to a list of data objects,
+// e.g. loaded from a CSV file:
+
+d3.csv("path/to/data.csv", function(error, data) {
+  data.forEach(prepData);
+  // your data should have numbers and Date objects in it now
+});
 ```
 
 ## Usage (Node.js)
