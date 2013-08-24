@@ -1,6 +1,6 @@
 {
   "name": "coerce",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Shawn Allen <shawn@stamen.com>",
   "description": "",
   "main": "coerce.js",

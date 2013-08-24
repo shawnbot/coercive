@@ -1,6 +1,6 @@
 (function(coerce) {
 
-  coerce.version = "0.0.3";
+  coerce.version = "0.0.4";
 
   if (typeof module === "object") {
     var d3 = require("d3");
