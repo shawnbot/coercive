@@ -5,7 +5,7 @@ parsed.
 
 ![travis-ci](https://api.travis-ci.org/shawnbot/coerce.png)
 
-## Quick Start
+## Examples
 Coerce provides functions for coercing both individual values and keys of
 objects. Here are some examples:
 
