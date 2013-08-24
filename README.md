@@ -1,7 +1,8 @@
 # coerce
 Coerce is a JavaScript toolkit for writing type coercions: functions that parse
 strings into other formats with configurable defaults if the string can't be
-parsed.
+parsed. Object coercion functions can be used to clean up data (from CSV, or
+other string-based formats) by coercing strings into numbers, dates, and more.
 
 ![travis-ci](https://api.travis-ci.org/shawnbot/coerce.png)
 
