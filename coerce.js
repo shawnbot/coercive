@@ -8,7 +8,7 @@
 
   coerce.object = function() {
     var ops = [],
-        coersion = function(d, i) {
+        coercion = function(d, i) {
           var context = this;
           ops.forEach(function(op) {
             op.call(context, d, i);
@@ -16,7 +16,7 @@
           return d;
         };
 
-    coersion.key = function(key, op) {
+    coercion.key = function(key, op) {
       op = coerce.op(op);
       ops.push(function(d, i) {
         // TODO: use properly?
@@ -24,23 +24,23 @@
           d[key] = op.call(d, d[key], key, i);
         }
       });
-      return coersion;
+      return coercion;
     };
 
-    coersion.keys = function(keys) {
+    coercion.keys = function(keys) {
       for (var key in keys) {
-        coersion.key(key, keys[key]);
+        coercion.key(key, keys[key]);
       }
-      return coersion;
+      return coercion;
     };
 
-    coersion.map = function(d, i) {
-      var copy = coersion.extend({}, d);
-      coersion(copy, i);
+    coercion.map = function(d, i) {
+      var copy = coercion.extend({}, d);
+      coercion(copy, i);
       return copy;
     };
 
-    return coersion;
+    return coercion;
   };
 
   coerce.coercer = function(parse, reject) {
@@ -62,13 +62,13 @@
     switch (typeof op) {
       case "string":
         if (!(op in this)) {
-          throw "Unknown coersion: " + op;
+          throw "Unknown coercion: " + op;
         }
         return coerce[op].apply(null, args);
       case "object":
         return coerce.object().keys(op);
     }
-    throw "Invalid coersion: " + op;
+    throw "Invalid coercion: " + op;
   };
 
   coerce.int = coerce.coercer(parseInt, isNaN);
