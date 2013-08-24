@@ -33,6 +33,12 @@
       return coersion;
     };
 
+    coersion.map = function(d, i) {
+      var copy = coersion.extend({}, d);
+      coersion(copy, i);
+      return copy;
+    };
+
     return coersion;
   };
 
@@ -99,6 +105,18 @@
     return coerce.coercer(function(str) {
       return parse(String(str));
     }, reject)(def);
+  };
+
+  coerce.extend = function(obj, ext) {
+    [].slice(arguments, 1).forEach(function(e) {
+      if (!e) return;
+      for (var key in e) {
+        if (e.hasOwnProperty(key)) {
+          obj[key] = e[key];
+        }
+      }
+    });
+    return obj;
   };
 
 })(typeof module === "object" ? module.exports : this.coerce = {});
