@@ -146,7 +146,7 @@ vows.describe("Coersions")
           {size: "238792"},
         ].map(coerceKey);
       },
-      "should produce dates": function(objects) {
+      "should produce numbers": function(objects) {
         objects.forEach(function(d) {
           assert.equal(typeof d.size, "number");
         });
@@ -166,7 +166,7 @@ vows.describe("Coersions")
           {size: "238792"},
         ].map(coerceKey);
       },
-      "should produce dates": function(objects) {
+      "should produce numbers": function(objects) {
         objects.forEach(function(d) {
           assert.equal(typeof d.size, "number");
         });
