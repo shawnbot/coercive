@@ -1,0 +1,16 @@
+{
+  "name": "coerce",
+  "version": "0.0.1",
+  "author": "Shawn Allen <shawn@stamen.com>",
+  "description": "",
+  "main": "coerce.js",
+  "dependencies": {
+    "d3": "~3.3.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node tests.js"
+  },
+  "repository": "",
+  "license": "BSD"
+}
