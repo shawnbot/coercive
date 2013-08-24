@@ -58,10 +58,8 @@ prepData({
 });
 // produces:
 // {"height": 6.5, "weight": 250, "birthday": <Date>}
-
 // or, just apply your coersions to a list of data objects,
 // e.g. loaded from a CSV file:
-
 d3.csv("path/to/data.csv", function(error, data) {
   data.forEach(prepData);
   // your data should have numbers and Date objects in it now
