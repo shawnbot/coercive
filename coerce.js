@@ -66,7 +66,9 @@
 
   coerce.int = coerce.coercer(parseInt, isNaN);
   coerce.float = coerce.coercer(parseFloat, isNaN);
-  coerce.num = coerce.coercer(function(s) { return +s; }, isNaN);
+  coerce.number = coerce.coercer(function(s) {
+    return s.length ? +s : NaN;
+  }, isNaN);
 
   coerce.money = coerce.coercer(function(s) {
     return +(String(s)
@@ -79,10 +81,21 @@
   };
 
   coerce.date = function(format, def) {
-    var parse = d3.time.format(format).parse,
-        reject = function(d) {
-          return d === null;
-        };
+    var parse;
+    if (Array.isArray(format)) {
+      var formats = format.map(d3.time.format),
+          len = formats.length;
+      parse = function(str) {
+        for (var i = 0; i < len; i++) {
+          var parsed = formats[i].parse(str);
+          if (parsed) return parsed;
+        }
+        return null;
+      };
+    } else {
+      parse = d3.time.format(format).parse;
+    }
+    var reject = function(d) { return d === null; };
     return coerce.coercer(function(str) {
       return parse(String(str));
     }, reject)(def);
