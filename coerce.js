@@ -3,7 +3,7 @@
     var d3 = require("d3");
   }
 
-  coerce.version = "0.0.1";
+  coerce.version = "0.0.2";
 
   coerce.object = function() {
     var ops = [],
