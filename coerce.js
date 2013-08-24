@@ -104,7 +104,7 @@
     }
     var reject = function(d) { return d === null; };
     return coerce.coercer(function(str) {
-      return parse(String(str));
+      return str ? parse(str) : null;
     }, reject)(def);
   };
 
