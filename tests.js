@@ -174,6 +174,27 @@ vows.describe("Coersions")
     },
 
   })
+  .addBatch({
+
+    "money coersion": {
+      topic: function() {
+        var $ = coerce.money();
+        return [
+          "$12",
+          "$100.58",
+          "$1,000,198.58",
+        ].map($);
+      },
+      "should produce numbers": function(numbers) {
+        numbers.forEach(function(n) {
+          assert.equal(typeof n, "number");
+        });
+      }
+    },
+
+    // TODO more tests here
+
+  })
   .run();
 
 /*
