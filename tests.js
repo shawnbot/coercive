@@ -3,7 +3,7 @@ var vows = require("vows"),
     util = require("util"),
     coerce = require("./coerce");
 
-vows.describe("Parsing numbers")
+vows.describe("Coersions")
   .addBatch({
 
     "numeric strings": {
@@ -120,18 +120,6 @@ vows.describe("Parsing numbers")
   .run();
 
 /*
-test("int(0):", coerce.int(0), [
-  "1",
-  "",
-  null
-]);
-
-test("date(now):", coerce.date("%Y-%m-%d", new Date()), [
-  "2001-09-11",
-  "3000-05-12",
-  null
-]);
-
 test("money:", coerce.money(), [
   "$382",
   "$15,200.00",
