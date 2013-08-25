@@ -1,7 +1,7 @@
 var vows = require("vows"),
     assert = require("assert"),
     util = require("util"),
-    coerce = require("./coerce");
+    coerce = require("./coercive");
 
 vows.describe("Coersions")
   .addBatch({

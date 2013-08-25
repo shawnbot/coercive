@@ -1,9 +1,9 @@
 {
-  "name": "coerce",
-  "version": "0.0.4",
+  "name": "coercive",
+  "version": "0.1.0",
   "author": "Shawn Allen <shawn@stamen.com>",
   "description": "",
-  "main": "coerce.js",
+  "main": "coercive.js",
   "dependencies": {
     "d3": "~3.3.1",
     "vows": "~0.7.0"
