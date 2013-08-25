@@ -1,13 +1,13 @@
-# coerce
-Coerce is a JavaScript toolkit for writing type coercions: functions that parse
+# Coercive
+Coercive is a JavaScript toolkit for writing type coercions: functions that parse
 strings into other formats with configurable defaults if the string can't be
 parsed. Object coercion functions can be used to clean up data (from CSV, or
 other string-based formats) by coercing strings into numbers, dates, and more.
 
-![travis-ci](https://api.travis-ci.org/shawnbot/coerce.png)
+![travis-ci](https://api.travis-ci.org/shawnbot/coercive.png)
 
 ## Examples
-Coerce provides functions for coercing both individual values and keys of
+Coercive provides functions for coercing both individual values and keys of
 objects. Here are some examples:
 
 ```js
@@ -70,23 +70,23 @@ d3.csv("path/to/data.csv", function(error, data) {
 ```
 
 ## Usage (Node.js)
-To use coerce in Node.js:
+To use coercive in Node.js:
 
 ```sh
-$ npm install coerce
+$ npm install coercive
 ```
 
 then, in your script:
 
 ```js
-var coerce = require("coerce");
+var coerce = require("coercive");
 ```
 
 ## Usage (browser)
-To use coerce in your browser, just include the script:
+To use coercive in your browser, just include the script:
 
 ```html
-<script src="path/to/coerce.js"></script>
+<script src="path/to/coercive.js"></script>
 ```
 
 Note that `coerce.date()` requires [d3](http://d3js.org), so you'll need that, too.
