@@ -87,6 +87,8 @@ To use coercive in your browser, just include the script:
 
 ```html
 <script src="path/to/coercive.js"></script>
+<!-- and, if you're using coerce.date(), be sure to include d3 -->
+<script src="http://d3js.org/d3.v3.min.js"></script>
 ```
 
-Note that `coerce.date()` requires [d3](http://d3js.org), so you'll need that, too.
+This gives you the coercive API in the `coerce` object (*not* `coercive`!).
