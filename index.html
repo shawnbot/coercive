@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Coerce by shawnbot</title>
+    <title>Coercive by shawnbot</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
@@ -15,32 +15,36 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1>Coerce</h1>
+        <h1>Coercive</h1>
         <p>Intuitive JavaScript type coercion and data cleanup</p>
 
-        <p class="view"><a href="https://github.com/shawnbot/coerce">View the Project on GitHub <small>shawnbot/coerce</small></a></p>
+        <p class="view"><a href="https://github.com/shawnbot/coercive">View the Project on GitHub <small>shawnbot/coercive</small></a></p>
 
+        <!--
+        <p>Install with <a href="http://npmjs.org">npm</a>:</p>
+        <pre>$ npm install coercive</pre>
+        -->
 
         <ul>
-          <li><a href="https://github.com/shawnbot/coerce/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/shawnbot/coerce/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/shawnbot/coerce">View On <strong>GitHub</strong></a></li>
+          <li><a href="https://github.com/shawnbot/coercive/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/shawnbot/coercive/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/shawnbot/coercive">View On <strong>GitHub</strong></a></li>
         </ul>
       </header>
       <section>
-        <h1><a name="coerce" class="anchor" href="#coerce"><span class="octicon octicon-link"></span></a>Coerce</h1>
+        <h1><a name="coercive" class="anchor" href="#coercive"><span class="octicon octicon-link"></span></a>Coercive</h1>
 
-<p>Coerce is a JavaScript toolkit for writing type coercions: functions that parse
+<p>Coercive is a JavaScript toolkit for writing type coercions: functions that parse
 strings into other formats with configurable defaults if the string can't be
 parsed. Object coercion functions can be used to clean up data (from CSV, or
 other string-based formats) by coercing strings into numbers, dates, and more.</p>
 
-<p><img src="https://api.travis-ci.org/shawnbot/coerce.png" alt="travis-ci"></p>
+<p><img src="https://api.travis-ci.org/shawnbot/coercive.png" alt="travis-ci"></p>
 
 <h2>
 <a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h2>
 
-<p>Coerce provides functions for coercing both individual values and keys of
+<p>Coercive provides functions for coercing both individual values and keys of
 objects. Here are some examples:</p>
 
 <div class="highlight"><pre><span class="c1">// coerce a number or return zero if the result is NaN</span>
@@ -104,22 +108,22 @@ objects. Here are some examples:</p>
 <h2>
 <a name="usage-nodejs" class="anchor" href="#usage-nodejs"><span class="octicon octicon-link"></span></a>Usage (Node.js)</h2>
 
-<p>To use coerce in Node.js:</p>
+<p>To use coercive in Node.js:</p>
 
-<div class="highlight"><pre><span class="nv">$ </span>npm install coerce
+<div class="highlight"><pre><span class="nv">$ </span>npm install coercive
 </pre></div>
 
 <p>then, in your script:</p>
 
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">coerce</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"coerce"</span><span class="p">);</span>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">coerce</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"coercive"</span><span class="p">);</span>
 </pre></div>
 
 <h2>
 <a name="usage-browser" class="anchor" href="#usage-browser"><span class="octicon octicon-link"></span></a>Usage (browser)</h2>
 
-<p>To use coerce in your browser, just include the script:</p>
+<p>To use coercive in your browser, just include the script:</p>
 
-<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"path/to/coerce.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"path/to/coercive.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 </pre></div>
 
 <p>Note that <code>coerce.date()</code> requires <a href="http://d3js.org">d3</a>, so you'll need that, too.</p>
