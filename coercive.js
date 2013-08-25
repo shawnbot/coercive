@@ -1,10 +1,10 @@
+if (typeof module === "object" && module.exports) {
+  var d3 = require("d3");
+}
+
 (function(coerce) {
 
-  coerce.version = "0.1.3";
-
-  if (typeof module === "object") {
-    var d3 = require("d3");
-  }
+  coerce.version = "0.1.4";
 
   coerce.object = function() {
     var ops = [],
