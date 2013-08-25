@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Coerce by shawnbot</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Coerce</h1>
+        <p>A nice little JavaScript library for type coercion and data cleanup</p>
+
+        <p class="view"><a href="https://github.com/shawnbot/coerce">View the Project on GitHub <small>shawnbot/coerce</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/shawnbot/coerce/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/shawnbot/coerce/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/shawnbot/coerce">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="coerce" class="anchor" href="#coerce"><span class="octicon octicon-link"></span></a>coerce</h1>
+
+<p>Coerce is a JavaScript toolkit for writing type coercions: functions that parse
+strings into other formats with configurable defaults if the string can't be
+parsed. Object coercion functions can be used to clean up data (from CSV, or
+other string-based formats) by coercing strings into numbers, dates, and more.</p>
+
+<p><img src="https://api.travis-ci.org/shawnbot/coerce.png" alt="travis-ci"></p>
+
+<h2>
+<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h2>
+
+<p>Coerce provides functions for coercing both individual values and keys of
+objects. Here are some examples:</p>
+
+<div class="highlight"><pre><span class="c1">// coerce a number or return zero if the result is NaN</span>
+<span class="kd">var</span> <span class="nx">numOrZero</span> <span class="o">=</span> <span class="nx">coerce</span><span class="p">.</span><span class="nx">number</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="nx">numOrZero</span><span class="p">(</span><span class="s2">"42"</span><span class="p">)</span>   <span class="c1">// 42</span>
+<span class="nx">numOrZero</span><span class="p">(</span><span class="s2">"asdf"</span><span class="p">)</span> <span class="c1">// 0</span>
+
+<span class="kd">var</span> <span class="nx">intOrNull</span> <span class="o">=</span> <span class="nx">coerce</span><span class="p">.</span><span class="kr">int</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<span class="nx">intOrNull</span><span class="p">(</span><span class="s2">"42"</span><span class="p">)</span>   <span class="c1">// 42</span>
+<span class="nx">intOrNull</span><span class="p">(</span><span class="s2">"asdf"</span><span class="p">)</span> <span class="c1">// null</span>
+
+<span class="c1">// coerce the "size" key of an object to a float (in place)</span>
+<span class="kd">var</span> <span class="nx">sizeToFloat</span> <span class="o">=</span> <span class="nx">coerce</span><span class="p">.</span><span class="nx">object</span><span class="p">()</span>
+  <span class="p">.</span><span class="nx">key</span><span class="p">(</span><span class="s2">"size"</span><span class="p">,</span> <span class="s2">"float"</span><span class="p">);</span>
+<span class="nx">sizeToFloat</span><span class="p">({</span><span class="nx">size</span><span class="o">:</span> <span class="s2">"46.5"</span><span class="p">});</span>  <span class="c1">// {"size": 46.5}</span>
+
+<span class="c1">// coerce a date string into a Date object:</span>
+<span class="kd">var</span> <span class="nx">parseDate</span> <span class="o">=</span> <span class="nx">coerce</span><span class="p">.</span><span class="nx">date</span><span class="p">(</span><span class="s2">"%Y-%m-%d"</span><span class="p">);</span>
+<span class="nx">parseDate</span><span class="p">(</span><span class="s2">"2001-10-31"</span><span class="p">)</span> <span class="c1">// &lt;Date&gt;</span>
+<span class="nx">parseDate</span><span class="p">(</span><span class="s2">"asdf"</span><span class="p">)</span>       <span class="c1">// null</span>
+
+<span class="c1">// you can also create multi-format date coercions, e.g. if your</span>
+<span class="c1">// data contains messy data in multiple formats</span>
+<span class="kd">var</span> <span class="nx">parseDate</span> <span class="o">=</span> <span class="nx">coerce</span><span class="p">.</span><span class="nx">date</span><span class="p">([</span>
+  <span class="s2">"%Y-%m-%d"</span><span class="p">,</span>
+  <span class="s2">"%d/%m/%Y"</span>
+<span class="p">]);</span>
+<span class="nx">parseDate</span><span class="p">(</span><span class="s2">"2001-10-31"</span><span class="p">)</span> <span class="c1">// &lt;Date&gt;</span>
+<span class="nx">parseDate</span><span class="p">(</span><span class="s2">"13/10/2001"</span><span class="p">)</span> <span class="c1">// &lt;Date&gt;</span>
+
+<span class="c1">// object coercions have a .map() method, too, just in case</span>
+<span class="c1">// you don't want to modify the objects in place</span>
+<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{</span><span class="nx">size</span><span class="o">:</span> <span class="s2">"1.4"</span><span class="p">},</span>
+    <span class="nx">b</span> <span class="o">=</span> <span class="p">{</span><span class="nx">size</span><span class="o">:</span> <span class="s2">"2.6"</span><span class="p">};</span>
+<span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">].</span><span class="nx">map</span><span class="p">(</span><span class="nx">sizeToFloat</span><span class="p">.</span><span class="nx">map</span><span class="p">);</span>
+<span class="c1">// produces an array of new objects with coerced keys:</span>
+<span class="c1">// [{"size": 1.4}, {"size": 2.6}]</span>
+
+<span class="c1">// and you can coerce multiple keys like this:</span>
+<span class="kd">var</span> <span class="nx">prepData</span> <span class="o">=</span> <span class="nx">coerce</span><span class="p">.</span><span class="nx">object</span><span class="p">()</span>
+  <span class="p">.</span><span class="nx">keys</span><span class="p">({</span>
+    <span class="nx">height</span><span class="o">:</span> <span class="s2">"number"</span><span class="p">,</span>
+    <span class="nx">weight</span><span class="o">:</span> <span class="s2">"int"</span><span class="p">,</span>
+    <span class="nx">birthday</span><span class="o">:</span> <span class="nx">coerce</span><span class="p">.</span><span class="nx">date</span><span class="p">(</span><span class="s2">"%Y-%m-%d"</span><span class="p">)</span>
+  <span class="p">});</span>
+<span class="nx">prepData</span><span class="p">({</span>
+  <span class="nx">height</span><span class="o">:</span> <span class="s2">"6.5"</span><span class="p">,</span>
+  <span class="nx">weight</span><span class="o">:</span> <span class="s2">"250"</span><span class="p">,</span>
+  <span class="nx">birthday</span><span class="o">:</span> <span class="s2">"1945-12-15"</span>
+<span class="p">});</span>
+<span class="c1">// produces:</span>
+<span class="c1">// {"height": 6.5, "weight": 250, "birthday": &lt;Date&gt;}</span>
+<span class="c1">// or, just apply your coersions to a list of data objects,</span>
+<span class="c1">// e.g. loaded from a CSV file:</span>
+<span class="nx">d3</span><span class="p">.</span><span class="nx">csv</span><span class="p">(</span><span class="s2">"path/to/data.csv"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">data</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">prepData</span><span class="p">);</span>
+  <span class="c1">// your data should have numbers and Date objects in it now</span>
+<span class="p">});</span>
+</pre></div>
+
+<h2>
+<a name="usage-nodejs" class="anchor" href="#usage-nodejs"><span class="octicon octicon-link"></span></a>Usage (Node.js)</h2>
+
+<p>To use coerce in Node.js:</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>npm install coerce
+</pre></div>
+
+<p>then, in your script:</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">coerce</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"coerce"</span><span class="p">);</span>
+</pre></div>
+
+<h2>
+<a name="usage-browser" class="anchor" href="#usage-browser"><span class="octicon octicon-link"></span></a>Usage (browser)</h2>
+
+<p>To use coerce in your browser, just include the script:</p>
+
+<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"path/to/coerce.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+
+<p>Note that <code>coerce.date()</code> requires <a href="http://d3js.org">d3</a>, so you'll need that, too.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/shawnbot">shawnbot</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
