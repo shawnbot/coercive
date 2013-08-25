@@ -1,6 +1,6 @@
 {
   "name": "coercive",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": "Shawn Allen <shawn@stamen.com>",
   "description": "An intuitive interface for type coercion and data cleanup",
   "tags": "data type coercion coerce string number date parse",
