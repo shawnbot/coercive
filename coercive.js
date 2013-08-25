@@ -1,6 +1,6 @@
 (function(coerce) {
 
-  coerce.version = "0.0.4";
+  coerce.version = "0.1.0";
 
   if (typeof module === "object") {
     var d3 = require("d3");
@@ -74,7 +74,8 @@
   coerce.int = coerce.coercer(parseInt, isNaN);
   coerce.float = coerce.coercer(parseFloat, isNaN);
   coerce.number = coerce.coercer(function(s) {
-    return s.length ? +s : NaN;
+    if (typeof s === "number") return s;
+    return String(s).length ? +s : NaN;
   }, isNaN);
 
   coerce.money = coerce.coercer(function(s) {
@@ -106,6 +107,43 @@
     return coerce.coercer(function(str) {
       return str ? parse(str) : null;
     }, reject)(def);
+  };
+
+  // coerce a string to a boolean
+  coerce.boolean = function(def) {
+    return function(val) {
+      if (typeof val === "boolean") {
+        return val;
+      }
+      switch (String(val).toLowerCase()) {
+        case "1":
+        case "t":
+        case "yes":
+        case "true":
+          return true;
+        case "0":
+        case "f":
+        case "no":
+        case "false":
+          return false;
+      }
+      return def;
+    };
+  };
+
+  // coerce a string to JSON (parsed with JSON.parse)
+  // NOTE that this includes JSON literals, so numeric strings will be turned
+  // into numbers, "true" and "false" into booleans, "null" into null, etc.
+  //
+  // Remember: decimal JSON numbers must be prefixed with a zero! 
+  coerce.json = function(def) {
+    return function(str) {
+      try {
+        return JSON.parse(str);
+      } catch (e) {
+      }
+      return def;
+    };
   };
 
   coerce.extend = function(obj, ext) {
